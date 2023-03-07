@@ -1,5 +1,6 @@
 //API
 const express = require('express')
+const app = express()
 //BOT
 const {
     createBot,
@@ -7,6 +8,7 @@ const {
     createFlow,
     addKeyword,
 } = require('@bot-whatsapp/bot')
+
 
 //Librerias (QR, Proveedor, DB, Dialogflow)
 const QRPortalWeb = require('@bot-whatsapp/portal')
