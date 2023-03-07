@@ -278,18 +278,18 @@ const mainbot = async () => {
 }
 
 
-const maindialogflow = async () => {
-    const adapterDB = new JsonFileAdapter()
+//const maindialogflow = async () => {
+//    const adapterDB = new JsonFileAdapter()
 
 
    
-    createBotDialog({
-        provider: adapterProvider,
-        database: adapterDB,
-    })
+//    createBotDialog({
+//        provider: adapterProvider,
+//        database: adapterDB,
+//    })
 
-    QRPortalWeb()
-}
+//    QRPortalWeb()
+//}
 
 
 mainbot()
