@@ -14,7 +14,7 @@ const {
 const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const JsonFileAdapter = require('@bot-whatsapp/database/json')
-const { createBotDialog } = require('@bot-whatsapp/contexts/dialogflow')
+//const { createBotDialog } = require('@bot-whatsapp/contexts/dialogflow')
 
 //API
 app.post('/send-message-bot', async (req, res) => {
@@ -293,4 +293,4 @@ const mainbot = async () => {
 
 
 mainbot()
-maindialogflow()
+//maindialogflow()
