@@ -1,0 +1,57 @@
+[handleMsg]:  {
+  key: {
+    remoteJid: '34651529614@s.whatsapp.net',
+    fromMe: false,
+    id: '3AD8E77EE630F4901F41',
+    participant: undefined
+  },
+  messageTimestamp: 1677835651,
+  pushName: 'maria',
+  message: Message {
+    conversation: 'Consolé',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Consolé',
+  from: '34651529614'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '34651529614@s.whatsapp.net',
+    fromMe: false,
+    id: '3AD5243FE165CC049AB4',
+    participant: undefined
+  },
+  messageTimestamp: 1677835654,
+  pushName: 'maria',
+  message: Message {
+    conversation: 'Console',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Console',
+  from: '34651529614'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '34651529614@s.whatsapp.net',
+    fromMe: false,
+    id: '3AB79DF24BC975C1B526',
+    participant: undefined
+  },
+  messageTimestamp: 1677835672,
+  pushName: 'maria',
+  message: Message {
+    conversation: 'console',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'console',
+  from: '34651529614'
+}

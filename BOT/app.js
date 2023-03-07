@@ -1,3 +1,6 @@
+//API
+const express = require('express')
+//BOT
 const {
     createBot,
     createProvider,
@@ -5,12 +8,19 @@ const {
     addKeyword,
 } = require('@bot-whatsapp/bot')
 
+//Librerias (QR, Proveedor, DB, Dialogflow)
 const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
-const JsonFileAdapter = require('@bot-whatsapp/database/mock')
+const JsonFileAdapter = require('@bot-whatsapp/database/json')
+const { createBotDialog } = require('@bot-whatsapp/contexts/dialogflow')
+
+//API
+app.post('/send-message-bot', async (req, res) => {
+    await adapterProvider.sendText('34620992036@c.us', 'Mensaje desde A-PU')
+    res.send({ data: 'enviado!' })
+})
 
 //1 Ubicacion
-
 const flowLugarmadrid = addKeyword(['📷 En Madrid','fotos en madrid'])
     .addAnswer(['🌳🏰 El lugar lo escoge usted, nosotros les damos  algunas opciones donde las fotos quedan muy lindas, pero si quieres otro lugar no hay ningún problema.'],{delay: 3000,})
     .addAnswer(['Sugerencias de lugares para fotos:','- Parque Europa','- Parque Retiro','- Puerta de Alcalá','- Parque Capricho','- Parque Juan Carlos','- Palacio Real'],{delay: 2000,})
@@ -68,6 +78,9 @@ const flowUbicacion = addKeyword(['ubica','uvica','dirección','direccion','dire
         ],
     }
     )
+
+
+    
 
 const flowEspana = addKeyword(['España 🌹','soy de Bilbao','soy de Galicia','soy de Valencia','soy de Alicante','soy de Murcia','soy de zaragoza','soy de badajoz','estoy en bilbao','estoy en galicia','estoy en valencia','estoy en alicante','estoy en murcia','estoy en badajoz','estoy en zaragoza','desde Bilbao','desde Galicia','desde Valencia','desde Alicante','desde Murcia','desde zaragoza','desde badajoz','en coruña','desde coruña','de coruña','desde santiago','en santiago','de santiago','en londres','de londres','desde londres','en reino unido','desde reino unido','de reino unido'])
     .addAnswer('Los vestidos en *Alquiler y Venta* los enviamos *a toda España*',{delay: 2000,})
@@ -212,7 +225,15 @@ const flowSeguimiento = addKeyword(['seguimiento','numero de envio','tracking','
 //const flowAudio = addKeyword({media:'type'}).addAnswer(
   //  'Lo siento, no puedo ver ni escuchar mensajes. Por favor, escribeme lo que necesitas',)
 
-const main = async () => {
+
+const adapterProvider = createProvider(BaileysProvider)
+
+
+adapterProvider.on("message",(ctx) => {
+    console.log
+})
+
+const mainbot = async () => {
     const adapterDB = new JsonFileAdapter()
     const adapterFlow = createFlow([
     flowLugarmadrid,
@@ -244,9 +265,6 @@ const main = async () => {
     flowSeguimiento,
     flowDamas,
     flowCatalogo])
-    const adapterProvider = createProvider(BaileysProvider)
-
-
 
     createBot({
         flow: adapterFlow,
@@ -257,4 +275,20 @@ const main = async () => {
     QRPortalWeb()
 }
 
-main()
+
+const maindialogflow = async () => {
+    const adapterDB = new JsonFileAdapter()
+
+
+   
+    createBotDialog({
+        provider: adapterProvider,
+        database: adapterDB,
+    })
+
+    QRPortalWeb()
+}
+
+
+mainbot()
+maindialogflow()
