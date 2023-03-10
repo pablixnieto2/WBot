@@ -1,0 +1,70 @@
+[
+  {
+    "ref": "ans_bd04063f-2215-4fc3-a616-d8f58acac46f",
+    "keyword": "key_7448b356-7787-4206-a812-3844281d1440",
+    "answer": "En *Madrid*, tenemos un desfile el 10 de Febrero de 2023.\nLa dirección es “Salones Venecia”, en la Calle Carolina Coronado 1 a las *20.00h*\nEl boleto cuesta 5€",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 2000,
+      "nested": [],
+      "keyword": {},
+      "callback": false
+    },
+    "refSerialize": "32b5c9303da89b904272cec3998ab8b7",
+    "from": "34651529614"
+  },
+  {
+    "ref": "ans_18e2a6ed-51f4-4f3a-a8b4-4bf552c17764",
+    "keyword": "ans_bd04063f-2215-4fc3-a616-d8f58acac46f",
+    "answer": "En *Barcelona* pronto haremos también un desfile\nSiguenos en nuestras redes para ser la primera en enterarte:",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 4000,
+      "nested": [],
+      "keyword": {},
+      "callback": false
+    },
+    "refSerialize": "62ac4db6c5781abb6035d3f888b335e4",
+    "from": "34651529614"
+  },
+  {
+    "ref": "ans_c49d5954-bad3-40e2-b25c-d7ca534441b2",
+    "keyword": "ans_18e2a6ed-51f4-4f3a-a8b4-4bf552c17764",
+    "answer": "www.instagram.com/vestidos15/",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 1000,
+      "nested": [],
+      "keyword": {},
+      "callback": false
+    },
+    "refSerialize": "a57d8b926f4e560d131469812d7bada1",
+    "from": "34651529614"
+  },
+  {
+    "ref": "ans_accca114-f77d-423c-8565-ad898d45ba32",
+    "keyword": "ans_c49d5954-bad3-40e2-b25c-d7ca534441b2",
+    "answer": "www.tiktok.com/@vestidos15__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 1000,
+      "nested": [],
+      "keyword": {},
+      "callback": false
+    },
+    "refSerialize": "8441259b3ffd5ceff1b940fb31ff0141",
+    "from": "34651529614"
+  }
+]
