@@ -5,6 +5,10 @@ const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const JsonFileAdapter = require('@bot-whatsapp/database/json')
 
+// Flujo terminal
+const flowTerminal = addKeyword('supercalifragilisticoespialidoso')
+     .addAnswer('👻👻👻👻')
+
 // Otros flows
 
 const flowTiempo = addKeyword(['cuanto tiempo antes','cuánto tiempo antes', 'cuantos meses antes', 'cuantas semanas antes','cuánto tiempo antes','cuanto tiempo antes','cuanta antelación','cuanta antelacion'])
@@ -234,6 +238,22 @@ const flowEspana = addKeyword(['España 🌹','soy de','estoy en','fuera de madr
      .addAnswer('www.instagram.com/vestidos15/',{delay: 1000,})
      .addAnswer('www.tiktok.com/@vestidos15__',{delay: 1000,})
 
+// Flows de satisfacción
+
+const flowExcelentebcn = addKeyword(['🤩 Excelente!'])
+     .addAnswer(['Nos alegra mucho que tu experiencia haya sido positiva!'])
+     .addAnswer(['Ayudanos dejandonos un review en Google 🙏, sólo te llevará un minuto','https://g.page/r/CV5Hso0Yqd-CEAg/review'],{ capture: true },null,[flowTerminal])
+
+const flowExcelentemad = addKeyword(['🤩 Excelente!!'])
+     .addAnswer(['Nos alegra mucho que tu experiencia haya sido positiva!'])
+     .addAnswer(['Ayudanos dejandonos un review en Google 🙏, sólo te llevará un minuto','https://g.page/r/CajU9L_dQ3FBEAg/review'],{ capture: true },null,[flowTerminal])
+
+const flowExcelentevideo = addKeyword(['Excelente!! 🤩🤩'])
+     .addAnswer(['Nos alegra mucho que tu experiencia haya sido positiva!'])
+     .addAnswer(['Ayudanos dejandonos un review en Google 🙏, sólo te llevará un minuto','https://g.page/r/Cev6L-i4YcuqEB0/review'],{ capture: true },null,[flowTerminal])
+
+const flowNormalmala = addKeyword(['🙂 Normal 🙂','😮‍💨 Mala 😮‍💨'])
+     .addAnswer(['Nos encantaría saber en qué podemos mejorar'],{ capture: true },null,[flowTerminal])
 
 const app = express()
 const main = async () => {
@@ -268,7 +288,11 @@ const main = async () => {
         flowServicios,
         flowEmbajadoras,
         flowModelaje,
-        flowDesfile])
+        flowDesfile,
+        flowExcelentebcn,
+        flowExcelentemad,
+        flowExcelentevideo,
+        flowNormalmala])
     const adapterProvider = createProvider(BaileysProvider)
 
     createBot({
@@ -284,17 +308,75 @@ app.post('/send-message', async (req, res) => {
     const { to, message } = req.body;
     await adapterProvider.sendText(to, message);
     res.send({ data: 'enviado!' });
-  });
-  
-// json format: {"to": "34651529614@c.us", "message": "Hola tia buena"}
+  });   // json format: {"to": "34XXXXXXXXX@c.us", "message": "Hola tia buena"}
 
 app.post('/send-file', async (req, res) => {
     const { to, media } = req.body;
     await adapterProvider.sendFile(to, media);
     res.send({ data: 'enviado!' });
-});
+});     // json format: {"to": "34XXXXXXXXX@c.us", "media": "https://arenaweb.net/wp-content/uploads/2023/01/Bebidas-Demo.pdf","answer": "Este es un pdf"}
 
-// json format: {"to": "34651529614@c.us", "media": "https://arenaweb.net/wp-content/uploads/2023/01/Bebidas-Demo.pdf","answer": "Este es un pdf"}
+app.post('/send-button-bcn', async (req, res) => {
+    const { to } = req.body;
+    const buttons = [
+        {buttonId: 'id1', buttonText: {displayText: '🤩 Excelente!'}, type: 1},
+        {buttonId: 'id2', buttonText: {displayText: '🙂 Normal 🙂'}, type: 1},
+        {buttonId: 'id3', buttonText: {displayText: '😮‍💨 Mala 😮‍💨'}, type: 1}
+      ]
+
+      const buttonMessage = {
+        text: "Muchas gracias por tu compra en Vestidos15. ¿Cómo calificarías tu experiencia de compra en Vestidos 15?",
+        footer: 'Mensaje generado automáticamente',
+        buttons: buttons
+    }
+    
+
+    const abc = await adapterProvider.getInstance()
+    await abc.sendMessage(to, buttonMessage)
+
+    res.send({ data: 'enviado!' });
+});    // Json format: {    "to": "34XXXXXXXXXX@c.us" }
+  
+app.post('/send-button-mad', async (req, res) => {
+    const { to } = req.body;
+    const buttons = [
+        {buttonId: 'id1', buttonText: {displayText: '🤩 Excelente!!'}, type: 1},
+        {buttonId: 'id2', buttonText: {displayText: '🙂 Normal'}, type: 1},
+        {buttonId: 'id3', buttonText: {displayText: '😮‍💨 Mala'}, type: 1}
+      ]
+
+      const buttonMessage = {
+        text: "Muchas gracias por tu compra en Vestidos15. ¿Cómo calificarías tu experiencia de compra en Vestidos 15?",
+        footer: 'Mensaje generado automáticamente',
+        buttons: buttons
+    }
+    
+
+    const abc = await adapterProvider.getInstance()
+    await abc.sendMessage(to, buttonMessage)
+
+    res.send({ data: 'enviado!' });
+});    // Json format: {    "to": "34XXXXXXXXXX@c.us" }
+
+app.post('/send-button-video', async (req, res) => {
+    const { to } = req.body;
+    const buttons = [
+        {buttonId: 'id1', buttonText: {displayText: 'Excelente!! 🤩🤩'}, type: 1},
+        {buttonId: 'id2', buttonText: {displayText: 'Normal 🙂🙂'}, type: 1},
+        {buttonId: 'id3', buttonText: {displayText: 'Mala 😮‍💨😮‍💨'}, type: 1}
+      ]
+
+      const buttonMessage = {
+        text: "Muchas gracias por tu compra en Vestidos15. ¿Cómo calificarías tu experiencia de compra en Vestidos 15?",
+        footer: 'Mensaje generado automáticamente',
+        buttons: buttons
+    }
+    
+    const abc = await adapterProvider.getInstance()
+    await abc.sendMessage(to, buttonMessage)
+
+    res.send({ data: 'enviado!' });
+});    // Json format: {    "to": "34XXXXXXXXXX@c.us" }
 
     QRPortalWeb()
     
