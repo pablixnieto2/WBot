@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "@bot-whatsapp/bot": "^0.1.25",
-    "@bot-whatsapp/cli": "^0.1.25",
-    "@bot-whatsapp/database": "^0.1.25",
-    "@bot-whatsapp/portal": "^0.1.25",
-    "@bot-whatsapp/provider": "^0.1.25"
-  }
-}
